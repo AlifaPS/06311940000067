@@ -1,0 +1,185 @@
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETS ALIFA PUTRI SAVITRI - 06311940000067
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <h3>Alifa Putri Savitri-06311940000067</h3>
+    <h1>HARGA MINYAK GORENG PADA BULAN JANUARI TAHUN 2022 PADA BEBERAPA KOTA DI INDONESIA BERDASARKAN JENIS PASAR</h1>
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 1, 2);
+            width: 70%;
+            height: 650px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const labels = [
+            'Jambi',
+            'DI Yogyakarta',
+            'Sulawesi Utara',
+            'Sulawesi Barat',
+            'Bengkulu',
+            'Sumatera Barat',
+            'Riau',
+            'Jawa Tengah',
+            'Kalimantan Selatan',
+            'Sumatera Utara',
+            'Lampung',
+            'Nusa Tenggara Barat',
+            'Kepulauan Bangka Belitung',
+            'Jawa Timur',
+            'Kalimantan Tengah',
+            'Kepulauan Riau',
+            'Banten',
+            'Kalimantan Timur',
+            'Sumatera Selatan',
+            'Jawa Barat',
+            'Sulawesi Tenggara',
+            'Bali',
+            'Sulawesi Selatan',
+            'Papua',
+            'Nusa Tenggara Timur',
+            'Aceh',
+
+
+        ];
+
+
+        const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
+        const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Pasar Tradisional',
+                data: [18400,
+                    18600,
+                    18600,
+                    18700,
+                    18850,
+                    19000,
+                    19150,
+                    19200,
+                    19200,
+                    19200,
+                    19250,
+                    19250,
+                    19350,
+                    19400,
+                    19400,
+                    19400,
+                    19600,
+                    19600,
+                    19650,
+                    19750,
+                    19750,
+                    19800,
+                    19900,
+                    20050,
+                    20100,
+                    20150,
+                    20300,
+                    20450,
+                    20550,
+                    20550,
+                    20800,
+                    22250,
+                    22300,
+                    25850,
+                ],
+                backgroundColor: 'rgb(2, 51, 239)',
+                borderColor: 'rgb(249, 165, 38)',
+
+                segment: {
+                    borderColor: ctx => skipped(ctx, 'rgb(0,0,0,0.2)') || down(ctx, 'rgb(255, 99, 132)'),
+                    borderDash: ctx => skipped(ctx, [6, 6]),
+                },
+                spanGaps: true
+            },
+            {
+                label: 'Pasar Modern',
+                data: [16900,
+                    17000,
+                    17400,
+                    18950,
+                    19000,
+                    19700,
+                    19850,
+                    20000,
+                    20350,
+                    20650,
+                    21000,
+                    21650,
+                    22600,
+                    23100,
+                    23350,
+                    25800,
+
+                ],
+                backgroundColor: 'rgb(240, 249, 38)',
+                borderColor: 'rgb(249, 38, 38)',
+
+                segment: {
+                    borderColor: ctx => skipped(ctx, 'rgb(0,0,0,0.2)') || down(ctx, 'rgb(88, 155, 254)'),
+                    borderDash: ctx => skipped(ctx, [6, 6]),
+                },
+                spanGaps: true
+            },
+
+
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                animations: {
+                    radius: {
+                        duration: 400,
+                        easing: 'linear',
+                        loop: (context) => context.active
+                    }
+                },
+                hoverRadius: 12,
+                hoverBackgroundColor: 'yellow',
+                interaction: {
+                    mode: 'nearest',
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        enabled: false
+                    }
+                }
+            },
+        };
+
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+    </script>
+
+
+</body>
+
+</html>
